@@ -1,4 +1,4 @@
-import conf from '../conf/config.js';
+import conf from '../conf/conf.js';
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service{
@@ -101,10 +101,10 @@ export class Service{
     async uploadFile(file){
         try {
             return await this.bucket.createFile(
-                conf.appwriteBucketId,
+                conf.appwriteBucket,
                 ID.unique(),
                 file
-            )
+            ).href;
         } catch (error) {
             console.log("Appwrite serive :: uploadFile :: error", error);
             return false
@@ -114,7 +114,7 @@ export class Service{
     async deleteFile(fileId){
         try {
             await this.bucket.deleteFile(
-                conf.appwriteBucketId,
+                conf.appwriteBucket,
                 fileId
             )
             return true
@@ -124,11 +124,11 @@ export class Service{
         }
     }
 
-    getFilePreview(fileId){
-        return this.bucket.getFilePreview(
-            conf.appwriteBucketId,
+    getFileView(fileId){
+        return this.bucket.getFileView(
+            conf.appwriteBucket,
             fileId
-        )
+        ).href;
     }
 }
 

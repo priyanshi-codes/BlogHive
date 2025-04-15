@@ -20,7 +20,7 @@ import AllPosts from "./pages/AllPosts";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
     children: [
         {
             path: "/",
@@ -43,11 +43,11 @@ const router = createBrowserRouter([
             ),
         },
         {
-            path: "/posts",
+            path: "/all-posts",
             element: (
                 <AuthLayout authentication>
                     {" "}
-                    <AllPosts/>
+                    <AllPosts />
                 </AuthLayout>
             ),
         },
